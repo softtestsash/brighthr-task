@@ -13,10 +13,6 @@ exports.AddEmployeePage = class AddEmployeePage {
         this.employeeSaveButton = page.getByRole('button', { name: 'Save new employee' });
     }
 
-    async clickAddEmployeeButton() {
-        await this.addEmployeeButton.click();
-    }
-
     async clickAddAnotherEmployeeButton() {
         await this.addAnotherEmployeeButton.click();
     }
