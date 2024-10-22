@@ -11,6 +11,7 @@ exports.AddEmployeePage = class AddEmployeePage {
         this.employeeStartDateInput = page.locator("id=startDate");
         this.today = page.locator('.DayPicker-Day--today');
         this.employeeSaveButton = page.getByRole('button', { name: 'Save new employee' });
+        this.closeModalX= page.getByRole('button', { name: 'Close modal' });
     }
 
     async clickAddAnotherEmployeeButton() {
@@ -23,11 +24,15 @@ exports.AddEmployeePage = class AddEmployeePage {
         await this.employeeEmailInput.fill(employee.email);
         await this.employeePhoneInput.fill(employee.phone);
         await this.employeeStartDateInput.click();
-        await this.today.click();//could do something clever here to get the day and add 1 or so to choose the number
+        await this.today.click();
         await this.employeeJobTitleInput.fill(employee.jobTitle);
     }
 
     async clickSaveEmployeeButton() {
         await this.employeeSaveButton.click();
+    }
+
+    async closeModal() {
+        await this.closeModalX.click();
     }
 }

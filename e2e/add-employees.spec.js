@@ -33,7 +33,7 @@ test('can add two new employees', async ({ page }) => {
   await page.goto('/login');
 
   // Login
-  await loginPage.login('sachamannion+task@gmail.com', 'VeryBrightHR<3');
+  await loginPage.login('sachamannion+qatask@gmail.com', 'VeryBrightHR<3');
 
   // Add first employee
   await dashboardPage.clickEmployeesTab();
@@ -41,16 +41,15 @@ test('can add two new employees', async ({ page }) => {
   await addEmployeePage.fillEmployeeInfo(employee1);
   await addEmployeePage.clickSaveEmployeeButton();
   await addEmployeePage.clickAddAnotherEmployeeButton();
-  //expect "John added to BrightHR Lite"
-  console.log('Employee 1 added');
 
   //Add second employee
   await addEmployeePage.fillEmployeeInfo(employee2);
   await addEmployeePage.clickSaveEmployeeButton();
-  //expect "Jane added to BrightHR Lite"
+
+  await addEmployeePage.closeModal();
 
   //Verify 2 employees have been added
-  expect (page.getByText(firstname1)).toContainText(firstname1)
-  expect (page.getByText(firstname2)).toContainText(firstname2)
+  await expect (page.getByText(firstname1)).toContainText(firstname1)
+  await expect (page.getByText(firstname2)).toContainText(firstname2)
 
 })
